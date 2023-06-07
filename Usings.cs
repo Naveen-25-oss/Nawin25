@@ -1,0 +1,12 @@
+global using ContinuityPatrol.AutomationTests.Extension;
+global using ContinuityPatrol.AutomationTests.Pages;
+global using ContinuityPatrol.AutomationTests.Shared;
+global using Microsoft.VisualStudio.TestTools.UnitTesting;
+global using OpenQA.Selenium;
+global using OpenQA.Selenium.Chrome;
+global using OpenQA.Selenium.Interactions;
+global using OpenQA.Selenium.Support.UI;
+global using SeleniumExtras.PageObjects;
+global using Shouldly;
+global using System.Diagnostics;
+global using System.Reflection;
