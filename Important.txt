@@ -1,0 +1,1533 @@
+using ContinuityPatrol.AutomationTests.Extension;
+using ContinuityPatrol.AutomationTests.Shared;
+using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools;
+using SeleniumExtras.PageObjects;
+using System.Drawing;
+using System.IO;
+using System.Xml.Linq;      
+
+namespace ContinuityPatrol.AutomationTests.Pages
+{
+    public class FormBiulderCreatePage : BasePage
+    {
+        private readonly IWebDriver _driver;
+
+        #region Fields
+
+        [FindsBy(How = How.Id, Using = "btnCreate")]
+        public IWebElement FormBuilderCreateButton { get; set; }
+
+        [FindsBy(How = How.Id, Using = "div_formtype")]
+        public IWebElement FormBuilderDropDown { get; set; }
+
+        [FindsBy(How = How.Id, Using = "ddformtype")]
+        public IWebElement FormBuilderDropDownInput { get; set; }
+
+        [FindsBy(How = How.Id, Using = "txtName")]
+        public IWebElement FormName { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='controlled-tab-example-tab-Fields'][1]")]
+        public IWebElement Fields { get; set; }
+
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='value_0']")]
+        public IWebElement checkboxclear { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='value_0']")]
+        public IWebElement checkboxclear23 { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='value_0']")]
+        public IWebElement checkboxclear23_1 { get; set; }
+
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        public IWebElement checkboxclear2 { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        public IWebElement checkboxclear267 { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        public IWebElement checkboxclear267_1 { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        public IWebElement checkboxclear4 { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        public IWebElement checkboxclear5 { get; set; }
+
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        public IWebElement checkboxclear4_1 { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        public IWebElement checkboxclear5_1 { get; set; }
+
+        [FindsBy(How = How.Id, Using = "plus")]
+        public IWebElement Dropdownadd { get; set; }
+
+        public void DDAdd()
+        {
+            Dropdownadd.Click();
+        }
+
+
+        public void checkout1()
+        {
+            checkboxclear4.Clear();
+        }
+
+      
+
+        public void checkout2()
+        {
+            checkboxclear5.Clear();
+        }
+
+        public void checkout1_1()
+        {
+            checkboxclear4_1.Clear();
+        }
+
+        public void checkout2_1()
+        {
+            checkboxclear5_1.Clear();
+        }
+
+        [FindsBy(How = How.Id, Using = "text")]
+        public IWebElement TextField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@data-rbd-droppable-id='characters']")]
+        public IWebElement DropField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@role='Dustbin']")]
+        public IWebElement DropClick { get; set; }
+
+        [FindsBy(How = How.Id, Using = "txtfield")]
+        public IWebElement TextEnter { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='tick']")]
+
+        public IWebElement TickEnter { get; set; }
+
+        [FindsBy(How = How.Id, Using = "btnSave")]
+
+        public IWebElement saveEnter { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='btnSave']")]
+
+        public IWebElement UpdateEnter { get; set; }
+
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        [CacheLookup]
+        public IWebElement textcl { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        [CacheLookup]
+        public IWebElement textclear { get; set; }
+
+        [FindsBy(How = How.Name, Using = "label")]
+        [CacheLookup]
+        public IWebElement textclear2 { get; set; }
+        [FindsBy(How = How.Name, Using = "label")]
+        [CacheLookup]
+        public IWebElement textclear245 { get; set; }
+
+        [FindsBy(How = How.Name, Using = "label")]
+        [CacheLookup]
+        public IWebElement textclear234 { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[3]/div/input")]
+        [CacheLookup]
+        public IWebElement Placeholderclear { get; set; }
+
+        [FindsBy(How = How.Name, Using = "placeholder")]
+        [CacheLookup]
+        public IWebElement Placeholderclear2 { get; set; }
+
+        [FindsBy(How = How.Name, Using = "placeholder")]
+        [CacheLookup]
+        public IWebElement Placeholderclear45 { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[3]/div/input")]
+        [CacheLookup]
+        public IWebElement Placeholderclick { get; set; }
+
+        [FindsBy(How = How.Id, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[3]/div/input")]
+        [CacheLookup]
+        public IWebElement CheckboxforPOC { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        [CacheLookup]
+        public IWebElement Headingpath { get; set; }
+
+        [FindsBy(How = How.Id, Using = "minus")]
+        [CacheLookup]
+        public IWebElement deletecheckboxes { get; set; }
+
+        [FindsBy(How = How.Id, Using = "minus")]
+        [CacheLookup]
+        public IWebElement deletecheckboxes2nd { get; set; }
+
+        [FindsBy(How = How.Id, Using = "minus")]
+        [CacheLookup]
+        public IWebElement deletecheckboxes3d { get; set; }
+
+        [FindsBy(How = How.Id, Using = "minus")]
+        [CacheLookup]
+        public IWebElement deletecheckboxes3d_1 { get; set; }
+
+        [FindsBy(How = How.Id, Using = "minus")]
+        [CacheLookup]
+        public IWebElement deletecheckboxes3d_2{ get; set; }
+
+        [FindsBy(How = How.Id, Using = "minus")]
+        [CacheLookup]
+        public IWebElement deletecheckboxes4th { get; set; }
+
+        [FindsBy(How = How.Id, Using = "Path_3289")]
+        [CacheLookup]
+        public IWebElement tickcheckin { get; set; }
+
+        private IWebElement _parentContainer => _driver.FindElement(By.Id("btnCreate"));
+
+        [FindsBy(How = How.Id, Using = "dropdown-basic")]
+        [CacheLookup]
+        public IWebElement more { get; set; }
+
+
+
+        [FindsBy(How = How.Id, Using = "btnEdit")]
+        [CacheLookup]
+        public IWebElement editdata { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        [CacheLookup]
+        public IWebElement Number { get; set; }
+
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[3]/div/input")]
+        [CacheLookup]
+        public IWebElement Numberplaceholder { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        [CacheLookup]
+        public IWebElement DropdownLabel { get; set; }
+
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[3]/div/input")]
+        [CacheLookup]
+        public IWebElement Dropdownplaceholder { get; set; }
+
+
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"txtdrDoc\"]")]
+        [CacheLookup]
+        public IWebElement DropdownLabel1 { get; set; }
+
+
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"txtdrDoc\"]")]
+        [CacheLookup]
+        public IWebElement DropdownLabel2 { get; set; }
+
+
+
+
+        //        try  {
+        //                IWebElement xpath = _driver.FindElement
+        ////txtfield
+        #endregion
+
+        public void DragAndDropExample()  //Rectangle_92
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.Id("text"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+            IWebElement source1 = _driver.FindElement(By.Id("text"));
+            IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+
+        public void Password()  //Rectangle_92
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.XPath("//*[@id='password']"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+            IWebElement source1 = _driver.FindElement(By.Id("text"));
+            IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+
+        public void Heading1()  //Rectangle_92
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.Id("text"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+            // IWebElement source1 = _driver.FindElement(By.Id("text"));
+            // IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+        public void DragAndDropExample1()
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.Id("text"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+            //IWebElement source1 = _driver.FindElement(By.Id("text"));
+            //IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+        public void DragAndDropExample123()
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.Id("text"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+            //IWebElement source1 = _driver.FindElement(By.Id("text"));
+            //IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+        public void DragAndDropExample2()
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.Id("text"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@id='controlled-tab-example-tabpane-Fields']/div/div[1]/div/div[1]/div[11]/div/div/div"));
+            //IWebElement source1 = _driver.FindElement(By.Id("text"));
+            //IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+        public void Checkbox1()
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.Id("checkbox"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+            //IWebElement source1 = _driver.FindElement(By.Id("text"));
+            //IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+        public void Checkbox56()
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.Id("checkbox"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+            //IWebElement source1 = _driver.FindElement(By.Id("text"));
+            //IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+        public void Checkbox567()
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.Id("checkbox"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+            //IWebElement source1 = _driver.FindElement(By.Id("text"));
+            //IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+        private const int MaxdelaySeconds = 3000;
+
+
+        public void WaitForJqueryAjax()
+        {
+            int delay = MaxdelaySeconds;
+            while (delay > 0)
+            {
+                Thread.Sleep(1000);
+                var jquery = (bool)(this._driver as IJavaScriptExecutor)
+                    .ExecuteScript("return window.jQuery == undefined");
+                if (jquery)
+                {
+                    break;
+                }
+                var ajaxIsComplete = (bool)(this._driver as IJavaScriptExecutor)
+                    .ExecuteScript("return window.jQuery.active == 0");
+                if (ajaxIsComplete)
+                {
+                    break;
+                }
+                delay--;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        public void DragAndDropExample234()
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.Id("number"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+            //IWebElement source1 = _driver.FindElement(By.Id("text"));
+            //IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+
+        public void Dropdown()
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.Id("drop_down"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+            //IWebElement source1 = _driver.FindElement(By.Id("text"));
+            //IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+        public void Dropdown35()
+        {
+            //static void Main(string[] args)
+            //{
+            //IWebDriver _driver = new ChromeDriver();
+            // Locate the source and target elements using standard Selenium methods
+            //IWebElement source = _driver.FindElement(By.Id("text"));
+            //IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            Actions actions = new Actions(_driver);
+
+            IWebElement source = _driver.FindElement(By.Id("Form_builder"));
+
+            IWebElement target = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+            //IWebElement source1 = _driver.FindElement(By.Id("text"));
+            //IWebElement target1 = _driver.FindElement(By.XPath("//*[@data-rbd-droppable-id='characters']"));
+
+            // Execute JavaScript to trigger the drag and drop events
+            ((IJavaScriptExecutor)_driver).ExecuteScript(
+                    "function createEvent(typeOfEvent) {\n" +
+                    "  var event = document.createEvent(\"CustomEvent\");\n" +
+                    "  event.initCustomEvent(typeOfEvent, true, true, null);\n" +
+                    "  event.dataTransfer = {\n" +
+                    "    data: {},\n" +
+                    "    setData: function (key, value) {\n" +
+                    "      this.data[key] = value;\n" +
+                    "    },\n" +
+                    "    getData: function (key) {\n" +
+                    "      return this.data[key];\n" +
+                    "    }\n" +
+                    "  };\n" +
+                    "  return event;\n" +
+                    "}\n" +
+                    "\n" +
+                    "function dispatchEvent(element, event, transferData) {\n" +
+                    "  if (transferData !== undefined) {\n" +
+                    "    event.dataTransfer = transferData;\n" +
+                    "  }\n" +
+                    "  if (element.dispatchEvent) {\n" +
+                    "    element.dispatchEvent(event);\n" +
+                    "  } else if (element.fireEvent) {\n" +
+                    "    element.fireEvent(\"on\" + event.type, event);\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "var source = arguments[0];\n" +
+                    "var target = arguments[1];\n" +
+                    "var dragstartEvent = createEvent('dragstart');\n" +
+                    "dispatchEvent(source, dragstartEvent);\n" +
+                    "var dragoverEvent = createEvent('dragover');\n" +
+                    "dispatchEvent(target, dragoverEvent);\n" +
+                    "var dropEvent = createEvent('drop');\n" +
+                    "dropEvent.dataTransfer = dragstartEvent.dataTransfer;\n" +
+                    "dispatchEvent(target, dropEvent);\n" +
+                    "var dragendEvent = createEvent('dragend');\n" +
+                    "dragendEvent.dataTransfer = dropEvent.dataTransfer;\n" +
+                    "dispatchEvent(source, dragendEvent);\n",
+                    source, target);
+
+            Console.WriteLine("Drag and drop successful!");
+            //}
+        }
+
+
+
+
+        public void DragAndDropAllFields()
+        {
+
+            _driver.FindElement(By.Id("text")).DragAndDrop(DropField);
+            Wait();
+            DropClick.Click();
+
+            _driver.FindElement(By.Id("email")).DragAndDrop(DropField);
+            Wait();
+            DropClick.Click();
+
+            _driver.FindElement(By.Id("radio_button")).DragAndDrop(DropField);
+            Wait();
+            DropClick.Click();
+
+            _driver.FindElement(By.Id("password-26")).DragAndDrop(DropField);
+            Wait();
+            DropClick.Click();
+
+            _driver.FindElement(By.Id("email")).DragAndDrop(DropField);
+            Wait();
+            DropClick.Click();
+
+            _driver.FindElement(By.Id("textarea")).DragAndDrop(DropField);
+            Wait();
+            DropClick.Click();
+        }
+
+        //public void DropMethod1()
+        //{
+        //    InputSimulator simulator = new InputSimulator();
+        //    _driver.FindElement(By.Id("text")).DragAndDrop(DropField);
+        //    Wait();
+        //    simulator.Mouse.LeftButtonClick();
+        //}
+
+        //IWebElement source = driver.FindElement(By.Id("draggable"));
+        //IWebElement target = driver.FindElement(By.Id("droppable"));
+
+        [FindsBy(How = How.Id, Using = "text")]
+        public IWebElement Source { get; set; }
+
+        [FindsBy(How = How.Id, Using = "text")]
+        public IWebElement Target { get; set; }
+
+
+        public void DropMethod2()
+        {
+            Actions Builder = new Actions(_driver);
+
+            Builder.ClickAndHold(TextField);
+
+            Builder.MoveToElement(DropField);
+
+            //Builder.DragAndDrop(TextField, DropField);
+
+            Builder.Release(DropField).Perform();
+
+            Builder.DoubleClick();
+
+            Builder.Build();
+
+        }
+
+        public void DropMethod3()
+        {
+            //Actions actions = new Actions(_driver);
+
+            Actions action = new Actions(_driver);
+
+            //actions.DragAndDropToOffset(_driver.FindElement(By.Id("text")), 895, 1);
+
+            _driver.Manage().Window.Maximize();
+
+            //actions.ClickAndHold(TextField).MoveToElement().release().build().perform();
+
+            action.ClickAndHold(TextField).MoveToElement(DropField).Release(DropField).Build().Perform();
+            Wait(1000);
+            DropField.Displayed();
+
+        }
+
+        public void DropMethod4()
+        {
+            Actions actions = new Actions(_driver);
+
+            IWebElement From = _driver.FindElement(By.Id("text"));
+
+            IWebElement To = _driver.FindElement(By.XPath("//*[@role='Dustbin']"));
+
+            actions.ClickAndHold(From).MoveToElement(To).Release(To).Build().Perform();
+
+            //actions.DragAndDrop(From, To);
+
+        }
+
+
+        public FormBiulderCreatePage(IWebDriver driver) : base(driver)
+        {
+            _driver = driver;
+
+            PageFactory.InitElements(_driver, this);
+        }
+
+
+        public static FormBiulderCreatePage GoTo(IWebDriver driver)
+        {
+            driver.Navigate().GoToUrl(ConfigHelper.ApplicationPath + "Forms/formbuilder");
+
+            return new FormBiulderCreatePage(driver);
+        }
+
+        public class Formbuilder
+        {
+            private IWebDriver driver;
+
+            public Formbuilder(IWebDriver driver)
+            {
+                this.driver = driver;
+            }
+            public void Navigate()
+            {
+                driver.Navigate().GoToUrl(ConfigHelper.ApplicationPath + "admin/pluginmanager");
+            }
+        }
+
+        public class SingleSignOn     //Forms/formbuilder
+        {
+            private IWebDriver driver;
+
+            public SingleSignOn(IWebDriver driver)
+            {
+                this.driver = driver;
+            }
+
+            public void Navigate()
+            {
+                driver.Navigate().GoToUrl(ConfigHelper.ApplicationPath + "configure/singlesignon");
+            }
+
+            // Define methods to interact with elements on this page
+            // ...
+        }
+
+
+        public void FormTypeSelect(string companyName)
+        {
+            FormBuilderDropDown.Click();
+
+            Wait(500);
+
+            FormBuilderDropDownInput.SendKeys(companyName);
+
+            FormBuilderDropDownInput.SendKeys(Keys.Enter);
+        }
+
+
+        public FormBiulderCreatePage Create(string FormName, string FormSelect)
+        {
+            FormNameEnter = FormName;
+            FormTypeSelect(FormSelect);
+            Wait(1000);
+            Fields.Click();
+            Wait(1000);
+            return new FormBiulderCreatePage(_driver);
+        }
+
+        public FormBiulderCreatePage textenter(string IPadd, String Placeholder)
+        {
+            ExepathNameEnter = IPadd;
+            placeholder = Placeholder;
+
+            Wait(1000);
+            Fields.Click();
+            Wait(1000);
+            return new FormBiulderCreatePage(_driver);
+        }
+
+        public FormBiulderCreatePage textenterss(string Macaddress, String Placeholder)
+        {
+            ExepathNameEnter = Macaddress;
+            placeholder = Placeholder;
+
+            Wait(1000);
+            Fields.Click();
+            Wait(1000);
+            return new FormBiulderCreatePage(_driver);
+        }
+        public string ExepathNameEnter
+        {
+            set => textcl.EnterText(value);
+        }
+
+        public string checkboxtext
+        {
+            set => checkboxclear2.EnterText(value);
+        }
+
+        public string checkboxtext2
+        {
+            set => checkboxclear267.EnterText(value);
+        }
+
+        public string checkboxtext2_1
+        {
+            set => checkboxclear267.EnterText(value);
+        }
+
+        public string Dropdownlabel1
+        {
+            set => DropdownLabel.EnterText(value);
+        }
+
+        public string dropdownlabel
+        {
+            set => Dropdownplaceholder.EnterText(value);
+        }
+
+        public string Numberplace
+        {
+            set => Numberplaceholder.EnterText(value);
+        }
+
+        public string Numberplace2
+        {
+            set => textclear2.EnterText(value);
+        }
+
+        public string Numberplace23
+        {
+            set => textclear245.EnterText(value);
+        }
+        public string Numberplace3
+        {
+            set => Placeholderclear2.EnterText(value);
+        }
+
+        public string DD
+        {
+            set => DropdownLabel1.EnterText(value);
+        }
+
+        public string DD2
+        {
+            set => DropdownLabel2.EnterText(value);
+        }
+
+        // public IWebElement text => _driver.FindElement(By.Id("Login1_txtPassword")).SendKeys("Testing1*");
+
+
+        public string placeholder
+        {
+            set => Placeholderclear2.EnterText(value);
+        }
+
+        public string Headinginput
+        {
+            set => Headingpath.EnterText(value);
+        }
+
+        public string checkclear
+        {
+            set => checkboxclear.EnterText(value);
+        }
+
+        public string checkclear23
+        {
+            set => checkboxclear23.EnterText(value);
+        }
+
+        public string checkclear23_1
+        {
+            set => checkboxclear23_1.EnterText(value);
+        }
+
+
+        public string Numberfield
+        {
+            set => Number.EnterText(value);
+        }
+
+        public void formCreateButton()
+        {
+            FormBuilderCreateButton.Click();
+        }
+
+        public void TextFieldDrag()
+        {
+            TextField.DragAndDrop(DropField);
+        }
+
+        public void textfieldname()
+        {
+            textcl.Click();
+        }
+
+        public void textfieldnameclear()
+        {
+            textclear.Clear();
+        }
+
+        public void placeclear()
+        {
+            Placeholderclear.Clear();
+        }
+
+        public void placeclear3()
+        {
+            Placeholderclear45.Clear();
+        }
+
+        public void placeclear1()
+        {
+            textclear2.Clear();
+        }
+
+        public void placeclear4()
+        {
+            textclear234.Clear();
+        }
+
+        public void tickclick()
+        {
+            TickEnter.Click();
+        }
+
+        public void saveclick()
+        {
+            saveEnter.Click();
+        }
+
+        [FindsBy(How = How.Id, Using = "nila-toastr")]
+        public IWebElement fbSavePopUp { get; set; }
+
+        public void moreandedit()
+        {
+            more.Click();
+            editdata.Click();
+        }
+
+
+        [FindsBy(How = How.Id, Using = "dropdownMenuOffset")]
+        [CacheLookup]
+        public IWebElement Formbuilderlist { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='layout-wrapper']/div[3]/div[1]/div/div/div/div[1]/div[1]/div/div/a[4]")]
+        [CacheLookup]
+        public IWebElement Formserver { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[2]/div/input")]
+        [CacheLookup]
+        public IWebElement Formserver2pass { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='uncontrolled-tab-example-tabpane-display']/form/div/div[1]/div[3]/div/input")]
+        [CacheLookup]
+        public IWebElement Formserver2pass2 { get; set; }
+
+        public string pass
+        {
+            set => Formserver2pass.EnterText(value);
+        }
+
+        public string pass2
+        {
+            set => Formserver2pass2.EnterText(value);
+        }
+
+
+        [FindsBy(How = How.Name, Using = "value.0.value")]
+        [CacheLookup]
+        public IWebElement Formserver1 { get; set; }
+
+        [FindsBy(How = How.Name, Using = "value.0.value")]
+        [CacheLookup]
+        public IWebElement Formserver2 { get; set; }
+
+        [FindsBy(How = How.Id, Using = "Form_builder")]
+        [CacheLookup]
+        public IWebElement Formserver23 { get; set; }
+
+        public void SelectFormbuilder()
+        {
+
+            Formbuilderlist.Click();
+
+
+            Formserver.Click();
+            Wait(1000);
+
+
+        }
+
+        public string FormNameEnter
+        {
+            set => FormName.EnterText(value);
+        }
+
+        public string FormNameEnter2
+        {
+            set => Formserver1.EnterText(value);
+        }
+
+        public string FormNameEnter23
+        {
+            set => Formserver2.EnterText(value);
+        }
+
+        public void CloseCurrentWindow()
+        {
+            Driver.Instance.Close();
+        }
+
+        public void checkbox()
+        {
+            deletecheckboxes2nd.Click();
+        }
+        public void checkbox3()
+        {
+            deletecheckboxes3d.Click();
+        }
+
+        public void checkbox3_1()
+        {
+            deletecheckboxes3d_1.Click();
+        }
+        public void checkbox4()
+        {
+            deletecheckboxes4th.Click();
+        }
+
+        public void checkbox4_1()
+        {
+            deletecheckboxes3d_2.Click();
+        }
+
+
+        public void tabkeys()
+        {
+            string allkeys = Keys.Tab;
+        }
+
+
+
+
+        public override bool IsAt()
+        {
+            return Driver.Instance.HasElement(By.XPath("(//h4[@class='body-header-text'])[2]"));
+        }
+
+        internal void Create(Func<string> toString, string v1, string v2)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+}
+
+
+
+{
+  "loginName": "Naveen",
+  "password": "6d61ebd53497c2b6604aadd75d0a6f8fe605d1d0853e1d24ac68e4902a0716de",
+  "companyId": "46253478-69f9-497b-b02a-83af781390c4",
+  "authenticationType": "In House"
+}
+
+file://10.11.20.47/QA_Sharing/
+
+
+
+sid; select name from V$database;
+
+
+select instance_name from v$instance;
+
+archive log list;
+
+
+
+/home/oracle/oracle
+
+echo $ORACLE_HOME
+
+echo $ORACLE_SID;
+
+log file command;
+select GROUP#,TYPE,MEMBER from v$logfile;
+
+SQL> select sys_context( 'userenv', 'current_schema' ) from dual; schema name
+
+ 
+
+personal link  https://rb.gy/sqxfw
+
+git account name : Naveen-25-oss

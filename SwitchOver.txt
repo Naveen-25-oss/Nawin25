@@ -1,0 +1,388 @@
+1)VERIFY DATABASE MODE - PR & DR   (DGVerifyDBModeAndRole)
+sudo su - oracle
+sqlplus / as sysdba
+133,134-sqlplus oradb as sysdba
+
+ select process,status,sequence# from v$managed_standby;   logfile
+ssh <username>@<ipaddress> ssh root@192.168.37.8 ex using powershell
+schema command : select sys_context( 'userenv', 'current_schema' ) from dual;
+
+
+command:select name, open_mode, database_role from v$database;
+
+ 
+
+output:
+
+ 
+
+PRIMARY DATABASE MODE OUTPUT :
+
+name      open_mode            database_role
+
+--------- -------------------- ----------------
+
+orcl           read write                primary
+
+ 
+
+DR DATABASE MODE OUTPUT :
+
+name      open_mode            database_role
+
+--------- -------------------- ----------------
+
+orcl           mounted                  physical standby
+
+ 
+
+2)(DGVerifyMaxSequnceNUmber)
+
+VERIFY MAXSEQUENCE NO : PR & DR
+
+ 
+
+command:select max(sequence#) maxseq from v$log_history;
+
+ 
+
+output:
+
+PRIMARY DATABASE MAX SEQUENCE OUTPUT :
+
+    MAXSEQ
+
+----------
+
+       137
+
+DR DATABASE MAX SEQUENCE OUTPUT :
+
+    MAXSEQ
+
+----------
+
+       137
+
+ 
+
+3)SWITCH LOGFILE : PR   (DGSwitchLogFile)
+
+ 
+
+commands:ALTER SYSTEM SWITCH LOGFILE;
+
+ 
+
+Description: it produce new log file.
+
+ 
+
+output:system altered.
+
+ 
+
+ 
+
+4)VERIFY MAXSEQUENCE NO : PR & DR    (DGVerifyMaxSequnceNUmber)
+
+ 
+
+commands:select max(sequence#) maxseq from v$log_history;
+
+ 
+
+output:
+
+PRIMARY DATABASE MAX SEQUENCE OUTPUT :
+
+    MAXSEQ
+
+----------
+
+       138
+
+DR DATABASE MAX SEQUENCE OUTPUT :
+
+    MAXSEQ
+
+----------
+
+       138
+
+ 
+
+5)  (DGCheckUserStatus)
+
+VERIFY USER STATUS : PR & DR
+
+ 
+
+command:select count(*) from  v$session where status='ACTIVE' and username NOT IN('SYS','SYSTEM');
+
+ 
+
+output:
+
+count(*)
+
+----------
+
+ 0
+
+6)Switch Over Status: PR & DR   (ExecuteCheckSqlCommand)
+
+ 
+
+ 
+
+Select switchover_status from V$database;
+
+ 
+
+output: (PR)
+
+SWITCHOVER_STATUS
+--------------------
+TO STANDBY
+
+
+
+output: (DR)
+SWITCHOVER_STATUS
+--------------------
+NOT ALLOWED
+
+
+ 
+
+ 
+
+7)DGSwitchPrimarytoStandby : PR
+
+ 
+
+command: ALTER DATABASE COMMIT TO SWITCHOVER TO PHYSICAL STANDBY WITH SESSION SHUTDOWN;
+                       (or)
+command: ALTER DATABASE COMMIT TO SWITCHOVER TO PHYSICAL STANDBY;     (DGSwitchPrimarytoStandby)
+command::Shut Immediate  (ShutImmediate)
+
+
+
+output:
+=====================
+database altered.
+
+ 
+
+8) startup nomount - PR     (DGMountStandby)
+
+ 
+
+Command:startup nomount;
+ output
+==================
+ORACLE instance started
+
+
+ 
+
+9) alter database mount standby database - PR
+
+ 
+
+Command:alter database mount standby database;
+
+
+output
+==================
+Database altered.
+
+
+ 
+
+10) DGSwitchStandbytoPrimary - DR
+
+ 
+
+commands: Alter database commit to switchover to primary with session shutdown;
+
+
+
+output:
+
+database altered.
+
+ 
+
+11) Alter database open - DR   (AlterDatabaseOpen)
+
+ 
+
+Command:Alter database open;
+
+ 
+Output:
+=================
+Database altered.
+
+
+ 
+
+12)Check_Open_Mode - PR & DR
+
+ 
+
+commands:select open_mode from v$database;
+
+ 
+
+output:PR
+==============================================
+OPEN_MODE
+--------------------
+MOUNTED
+
+
+
+
+output:DR
+==============================================
+OPEN_MODE
+--------------------
+READ WRITE
+
+
+
+
+
+ 
+
+13) switch log file - DR
+
+ 
+
+command: ALTER SYSTEM SWITCH LOGFILE;
+
+Output:
+System altered.
+
+
+
+
+14)START STANDBY RECOVERY - PR
+
+ 
+
+command:ALTER DATABASE RECOVER MANAGED STANDBY DATABASE DISCONNECT FROM SESSION;
+
+output:database altered.
+
+
+
+
+
+
+
+
+
+
+15)VERIFY MAXSEQUENCE NO : PR & DR
+
+ 
+
+commands:select max(sequence#) maxseq from v$log_history;
+
+ 
+
+output:
+
+PRIMARY DATABASE MAX SEQUENCE OUTPUT :
+
+    MAXSEQ
+
+----------
+
+       138
+
+DR DATABASE MAX SEQUENCE OUTPUT :
+
+    MAXSEQ
+
+----------
+
+       138
+
+ 
+
+output:system altered.
+
+ 
+
+
+
+
+16) switch log file - DR
+
+ 
+
+command: ALTER SYSTEM SWITCH LOGFILE;
+
+Output:
+System altered.
+
+
+
+
+
+17)VERIFY MAXSEQUENCE NO : PR & DR
+
+ 
+
+commands:select max(sequence#) maxseq from v$log_history;
+
+ 
+
+output:
+
+PRIMARY DATABASE MAX SEQUENCE OUTPUT :
+
+    MAXSEQ
+
+----------
+
+       138
+
+DR DATABASE MAX SEQUENCE OUTPUT :
+
+    MAXSEQ
+
+----------
+
+       138
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
